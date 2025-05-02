@@ -97,7 +97,6 @@ public class GUI extends JFrame{
 					else {
 						ImageIcon localPacManImageL = spriteMap.get("P");
 						JLabel localPacManLabelL = new JLabel(localPacManImageL);
-						gameBoardDisplayJPanel.add(localPacManLabelL);
  						gameBoardDisplayJPanel.add(localPacManLabelL);
 					}
 				}
