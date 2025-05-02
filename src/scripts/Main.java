@@ -1,9 +1,5 @@
 package scripts;
 
-import java.awt.Image;
-
-import javax.swing.*;
-
 /**
  * The class {@code} Main} boot the class {@code Game}.
  * Also set up basic properties of the game window.
@@ -21,17 +17,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 
+		@SuppressWarnings("unused")
 		Game newGame = new Game();
-		newGame.setVisible(true);
-		newGame.setSize(441,441);
-		newGame.setResizable(false);
-		newGame.setLocationRelativeTo(null);
-		newGame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-		ImageIcon localPacManIcon = new ImageIcon(SpritesLoader.class.getResource("/Sprites/pacmanRight.png"));
-		Image gameIcon = localPacManIcon.getImage();
-		newGame.setIconImage(gameIcon);
 		}
 
 }

@@ -4,7 +4,6 @@ import javax.swing.*;
 
 import javax.swing.Timer;
 
-import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
@@ -17,9 +16,9 @@ import java.util.*;
  * @version 1.0.0
  * @since 1.0.0
  */
-public class Game extends JFrame implements KeyListener{
-	private static final long serialVersionUID = 1L;
+public class Game  implements KeyListener{
 	private PacMan pacman;
+	private GUI userGui;
 	String[][] gameBoard; 
 	HashMap<String, ImageIcon> spriteMap;
 	private static int score;
@@ -39,30 +38,14 @@ public class Game extends JFrame implements KeyListener{
 		gameBoard = MatrixFromFileExtractor.MatrixExtractor("src/TileMap.txt");
 		spriteMap = SpritesLoader.SpritesMapLoader(); 
 		
-		// Graphic interface Creation
-		JPanel topPanel = new JPanel(new GridLayout(1, 2));
-	    JLabel scoreLabel = new JLabel("Score: " + score, SwingConstants.LEFT);
-	    JLabel livesLabel = new JLabel("Lives: " + lives, SwingConstants.RIGHT);
-	    JPanel contentPanel = new JPanel(new BorderLayout());
-		JPanel gameBoardDisplayJPanel = new JPanel(new GridLayout(21,21));
-		
-		// Graphic interface assembly
-	    topPanel.add(scoreLabel);
-	    topPanel.add(livesLabel);
-	    topPanel.setBackground(Color.BLACK);
-	    scoreLabel.setForeground(Color.WHITE);
-	    livesLabel.setForeground(Color.WHITE);
-		gameBoardDisplayJPanel.setBackground(Color.black);
-	    contentPanel.add(topPanel, BorderLayout.NORTH);
-	    contentPanel.add(gameBoardDisplayJPanel, BorderLayout.CENTER);
-	    setContentPane(contentPanel);
-		add(gameBoardDisplayJPanel);
+		userGui = new GUI();
+
+		// Creations of game objects pacman and ghosts
+
+		pacman = new PacMan(new int[]{10, 19}, new int[]{0, 0});
 		
 		// Buttons listener adding 
-		addKeyListener(this);
-		
-		// Creations of game objects pacman and ghosts
-		pacman = new PacMan(new int[]{10, 19}, new int[]{0, 0});
+		userGui.addKeyListener(this);
 		
 		Ghost[] ghosts = new Ghost[] {
 			    new Ghost(new int[]{10, 11}, new int[]{0, 1}, "r"),
@@ -75,20 +58,21 @@ public class Game extends JFrame implements KeyListener{
 		gameClock = new Timer(300, (ActionEvent a) -> {
 			
 			// refresh of score and lives number
-        	scoreLabel.setText("Score : " +score);
-        	livesLabel.setText("Lives : " + lives);
+			userGui.updateScoreDisplay();
+			userGui.updatesLifesDisplay();
+
         	
         	// Pac-man is moved in the direction given by keys
         	pacman.checkCollisionAndMove(gameBoard);
         	
         	//If pacman has met a ghost is defeated
-        	checkGameOver(ghosts, pacman , gameClock, livesLabel);
+        	checkGameOver(ghosts, pacman , gameClock);
         	
         	// All ghosts are moved
         	for(Ghost ghost : ghosts) {	ghost.checkCollisionAndMove(gameBoard);}
         	
         	//If pacman has met a ghost is defeated
-        	checkGameOver(ghosts, pacman , gameClock, livesLabel);
+        	checkGameOver(ghosts, pacman , gameClock);
         	
         	//If is in invincible mode it's duration is decreased
     		if(invincibleModeCooldown > 0) {invincibleModeCooldown--;}
@@ -96,79 +80,16 @@ public class Game extends JFrame implements KeyListener{
     		// if any character is near to one of two portal at sides of the map is teleported to the other
         	PortalTeleport(gameBoard, pacman ,  ghosts);
         	
+        	userGui.refreshGameScreen(gameBoard, spriteMap, pacman);
+        	
         	// Check if victory is achieved
         	checkVictory(pacman, ghosts);
         	
         	// Game screen is refreshed
-        	refreshGameScreen(gameBoardDisplayJPanel, gameBoard, spriteMap, pacman);
         });
 		gameClock.start();   // clock is started
 	}
-	
-	/** 
-	 * The method {@code refreshGameScreen} displays on a panel {@code gameBoardDisplayJPanel} with a layout gridLayout
-	 * a 2d array of strings {@code gameBoardDisplayJPanel} the method for each string takes the first letter
-	 * and extract with it as a key an imageIcon from a HashMap that gets converted in JLable object and added to 
-	 * the gridLayout, the method also has specific ways to display characters with differtent images.
-	 * 
-	 * @param gameBoardDisplayJPanel the graphic container with a gridLayout that contains each square image in format JLable
-	 * @param gameBoard the 2d array that represent the game board and its content like food and characters
-	 * @param spriteMap is a HashMap that contains strings of single letters associated with an ImageIcon used to paint the screen
-	 * @param pacMan is a reference to the Pac-Man object useful to execute useful methods on it here to check the direction of pac-man
-	 * to display the corresponding direction image
-	 * 
-	 * @see Character#getcurrentDirectionXY()
-	 */
-	public static void refreshGameScreen(JPanel gameBoardDisplayJPanel, String[][] gameBoard, HashMap<String, ImageIcon> spriteMap, PacMan pacMan) {
-		gameBoardDisplayJPanel.removeAll();
-		for(String[] row : gameBoard) {
-			for(String string : row) {
-				char firstChar =  string.charAt(0);
-				String firstCharString = String.valueOf(firstChar);
-				if(firstCharString.equals("P")){
-					int[] actualDirection = pacMan.getcurrentDirectionXY();
-					if(Arrays.equals(actualDirection, new int[]{0, -1})) {
-						ImageIcon localPacManImageU = spriteMap.get("U");
-						JLabel localPacManLabelU = new JLabel(localPacManImageU);
-						gameBoardDisplayJPanel.add(localPacManLabelU);
-					}
-						
-					else if(Arrays.equals(actualDirection, new int[]{0, 1})) {
-						ImageIcon localPacManImageD = spriteMap.get("D");
-						JLabel localPacManLabelD = new JLabel(localPacManImageD);
-						gameBoardDisplayJPanel.add(localPacManLabelD);
-					}
-					else if(Arrays.equals(actualDirection, new int[]{1,0})) {
-						ImageIcon localPacManImageP = spriteMap.get("P");
-						JLabel localPacManLabelP = new JLabel(localPacManImageP);
-						gameBoardDisplayJPanel.add(localPacManLabelP);
-					}
-					else if(Arrays.equals(actualDirection, new int[]{-1, 0})) {
-						ImageIcon localPacManImageL = spriteMap.get("L");
-						JLabel localPacManLabelL = new JLabel(localPacManImageL);
-						gameBoardDisplayJPanel.add(localPacManLabelL);
-					}
-					else {
-						ImageIcon localPacManImageL = spriteMap.get("P");
-						JLabel localPacManLabelL = new JLabel(localPacManImageL);
-						gameBoardDisplayJPanel.add(localPacManLabelL);
- 						gameBoardDisplayJPanel.add(localPacManLabelL);
-					}
-				}
-				else if(invincibleModeCooldown > 0 && (firstCharString.equals("b") || firstCharString.equals("o") ||  firstCharString.equals("p") || firstCharString.equals("r"))){
-					ImageIcon weakGhostImage = spriteMap.get("w");
-					JLabel weakGhostLabel = new JLabel(weakGhostImage);
-					gameBoardDisplayJPanel.add(weakGhostLabel);
-				}else {
-				ImageIcon localImage = spriteMap.get(firstCharString);
-				JLabel gametileJLabel = new JLabel(localImage);
-				gameBoardDisplayJPanel.add(gametileJLabel);
-				}
-			}
-		}
-		gameBoardDisplayJPanel.revalidate();
-		gameBoardDisplayJPanel.repaint();
-	}
+
 	
 	/**
 	 * Increases the score static instance variable by 2.
@@ -176,6 +97,7 @@ public class Game extends JFrame implements KeyListener{
 	public static void foodsScoreIncrease() {
 		score += 2;
 	}
+	
 	
 	/**
 	 * Increases the invincibility static instance variable by 30 frames or 10 seconds
@@ -209,7 +131,7 @@ public class Game extends JFrame implements KeyListener{
 	 * @see Ghost#teleportAt(String[][], int[])
 	 */
 
-	public void checkGameOver(Ghost[]  ghosts, PacMan pacman , Timer gameClock, JLabel livesLabel) {
+	public void checkGameOver(Ghost[]  ghosts, PacMan pacman , Timer gameClock) {
 		
 		int[] pacmanCoordinnatesXY = pacman.getCoordinatesXY();
 		for(Ghost ghost : ghosts) {
@@ -233,7 +155,7 @@ public class Game extends JFrame implements KeyListener{
 			}
 			if(lives == 0) {
 				gameClock.stop();
-				livesLabel.setText("GAME OVER");
+				userGui.updatesLifesDisplay();
 			}
 		}
 	}
@@ -361,6 +283,17 @@ public class Game extends JFrame implements KeyListener{
 	public void keyTyped(KeyEvent e) {
 	    // Not needed
 	}
-
-
+	
+	public static int getLives() {
+		return lives;
+	}
+	
+	public static int getScore() {
+		return score;
+	}
+	public static int getInvincibility() {
+		return invincibleModeCooldown;
+		
+	}
+	
 }
