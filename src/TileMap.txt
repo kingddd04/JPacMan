@@ -9,9 +9,9 @@ W . . . . . . . . . . . . . . . . . . . . W
 W W W . W W W W W W . W W W W W W W . W W W
 W W W . . . . . . . . . . . . . . . . W W W
 O . . . W W W W W W W W W W W W W W . . . 0
-W W W . W . . . . . r . . . . . . W . W W W
+W W W . W . . . . . . . . . . . . W . W W W
 W . . . W . W . W . W . W . W W . W . W W W
-W . W . . . . . W p o b W . . . . . . . . W
+W . W . . . . . W . . . W . . . . . . . . W
 W . W W W W W . W W W W W . W W W W W W . W
 W . . . W . . . . . . . . . . . . . . . . W
 W . W . W . W . W W W W W W W W W W W W . W

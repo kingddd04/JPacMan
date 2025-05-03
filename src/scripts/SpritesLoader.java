@@ -45,10 +45,10 @@ public class SpritesLoader {
         ImageIcon weaknedGhosImage = new ImageIcon(SpritesLoader.class.getResource("/Sprites/scaredGhost.png"));
         
         // Pacman sprites
-        ImageIcon pacmanUpImage = new ImageIcon(SpritesLoader.class.getResource("/Sprites/pacmanUp.png"));
-        ImageIcon pacmanDownImage = new ImageIcon(SpritesLoader.class.getResource("/Sprites/pacmanDown.png"));
-        ImageIcon pacmanLeftImage = new ImageIcon(SpritesLoader.class.getResource("/Sprites/pacmanLeft.png"));
-        ImageIcon pacmanRightImage = new ImageIcon(SpritesLoader.class.getResource("/Sprites/pacmanRight.png"));
+        ImageIcon pacmanUpImage = new ImageIcon(SpritesLoader.class.getResource("/Sprites/pacmanUp.gif"));
+        ImageIcon pacmanDownImage = new ImageIcon(SpritesLoader.class.getResource("/Sprites/pacmanDown.gif"));
+        ImageIcon pacmanLeftImage = new ImageIcon(SpritesLoader.class.getResource("/Sprites/pacmanLeft.gif"));
+        ImageIcon pacmanRightImage = new ImageIcon(SpritesLoader.class.getResource("/Sprites/pacmanRight.gif"));
 
 		
 		HashMap<String, ImageIcon> spriteMap = new HashMap<>();

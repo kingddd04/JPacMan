@@ -19,10 +19,11 @@ public class GUI extends JFrame{
 	public GUI() {
 		
 		setVisible(true);
-		setSize(441,441);
+		setSize(500,500);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setFocusable(true);
 
 
 		ImageIcon localPacManIcon = new ImageIcon(SpritesLoader.class.getResource("/Sprites/pacmanRight.png"));
@@ -97,7 +98,7 @@ public class GUI extends JFrame{
 					else {
 						ImageIcon localPacManImageL = spriteMap.get("P");
 						JLabel localPacManLabelL = new JLabel(localPacManImageL);
- 						gameBoardDisplayJPanel.add(localPacManLabelL);
+						gameBoardDisplayJPanel.add(localPacManLabelL);
 					}
 				}
 				else if(invincibleModeCooldown > 0 && (firstCharString.equals("b") || firstCharString.equals("o") ||  firstCharString.equals("p") || firstCharString.equals("r"))){
@@ -125,5 +126,10 @@ public class GUI extends JFrame{
 		int score =  Game.getScore();
 	    scoreLabel.setText("Score : "+ score);
 	}
+	
+	public void updateLifesLabelText(String text) {
+	    livesLabel.setText(text);
+	}
+	
 
 }

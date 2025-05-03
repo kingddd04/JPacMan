@@ -61,6 +61,7 @@ public class Ghost extends Character{
 				availableDirections.add(direction);
 			}
 		}
+		
 		// choice of a random direction between all the valid ones
 		int[] chosenDirection = availableDirections.get(random.nextInt(availableDirections.size()));
 		currentDirectionXY = chosenDirection;
@@ -82,13 +83,20 @@ public class Ghost extends Character{
 	@Override
 	public void teleportAt(String[][] gameBoard, int[] targetCoordinatesXY) {
 		
-		// Ghost movement
+		//removing GhostIcon
+		removeGhostIcon(gameBoard);
+		
+		// Coordinates Update
+		gameBoard[targetCoordinatesXY[1]][targetCoordinatesXY[0]] = ghostColorLetter;
+		currentCoordinatesXY = targetCoordinatesXY;
+		
+	}
+	
+	public void removeGhostIcon(String[][] gameBoard) {
 		gameBoard[currentCoordinatesXY[1]][currentCoordinatesXY[0]] = gameBoard[currentCoordinatesXY[1]][currentCoordinatesXY[0]].replace(ghostColorLetter, "");
 		if(gameBoard[currentCoordinatesXY[1]][currentCoordinatesXY[0]].length() == 0){
 			gameBoard[currentCoordinatesXY[1]][currentCoordinatesXY[0]] = " ";
 		}
-		gameBoard[targetCoordinatesXY[1]][targetCoordinatesXY[0]] = ghostColorLetter;
-		currentCoordinatesXY = targetCoordinatesXY;
 		
 	}
 

@@ -38,9 +38,17 @@ public class PacMan extends Character{
 		
 		// Square good events processing
 		String targetTileContent = gameBoard[currentCoordinatesXY[1]+currentDirectionXY[1]][currentCoordinatesXY[0]+currentDirectionXY[0]];
-		if(targetTileContent.contains(".")){Game.foodsScoreIncrease();}
-		if(targetTileContent.contains("x")){Game.increaseInvincibilityTime();}
-		if(targetTileContent.contains("f")){Game.increaseLifes();}
+		if(targetTileContent.contains(".")){
+			Game.foodsScoreIncrease();
+			SoundPlayer.playSound("src/Sounds/pacManEating.wav");
+			}
+		if(targetTileContent.contains("x")){
+			Game.increaseInvincibilityTime();
+			SoundPlayer.playSound("src/Sounds/powerUpEaten.wav");
+			}
+		if(targetTileContent.contains("f")){Game.increaseLifes();
+			SoundPlayer.playSound("src/Sounds/fruitEaten.wav");
+			}
 		
 		// Pac-Man movement
 		if(!targetTileContent.equals("W") && !targetTileContent.equals("0") && !targetTileContent.equals("O")) {
