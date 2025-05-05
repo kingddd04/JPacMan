@@ -38,8 +38,8 @@ Players control Pac-Man to **collect dots**, **avoid ghosts**, and **use power-u
 
 ## 📦 Installation
 
--Option one(recommended) : download the latest release zip , extract it and run the .EXE working on any windows device,
+-**Option one(recommended)** : download the latest release zip , extract it and run the .EXE working on any windows device,
       warning! JRE folder is required do not move or delete it!
       
--Option two: Create a new project in your java enviorment and sobstitute the content of your source folder with the given src folder, 
+-**Option two**: Create a new project in your java enviorment and sobstitute the content of your source folder with the given src folder, 
         however compatipility is not guaranteed for java version below 24 and you may need to edit the code
