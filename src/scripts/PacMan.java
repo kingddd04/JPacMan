@@ -40,14 +40,14 @@ public class PacMan extends Character{
 		String targetTileContent = gameBoard[currentCoordinatesXY[1]+currentDirectionXY[1]][currentCoordinatesXY[0]+currentDirectionXY[0]];
 		if(targetTileContent.contains(".")){
 			Game.foodsScoreIncrease();
-			SoundPlayer.playSound("src/Sounds/pacManEating.wav");
+			SoundPlayer.playSound("/Sounds/pacManEating.wav");
 			}
 		if(targetTileContent.contains("x")){
 			Game.increaseInvincibilityTime();
-			SoundPlayer.playSound("src/Sounds/powerUpEaten.wav");
+			SoundPlayer.playSound("/Sounds/powerUpEaten.wav");
 			}
 		if(targetTileContent.contains("f")){Game.increaseLifes();
-			SoundPlayer.playSound("src/Sounds/fruitEaten.wav");
+			SoundPlayer.playSound("/Sounds/fruitEaten.wav");
 			}
 		
 		// Pac-Man movement

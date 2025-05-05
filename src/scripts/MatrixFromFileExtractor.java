@@ -29,7 +29,8 @@ public class MatrixFromFileExtractor {
 		ArrayList<String[]> gameMap = new ArrayList<String[]>();
 		
 		// FIle Reading
-		 try (BufferedReader reader = new BufferedReader(new FileReader(filepath))) {
+		try (InputStream is = MatrixFromFileExtractor.class.getResourceAsStream(filepath);
+			    BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
 		        String line;
 		        while ((line = reader.readLine()) != null) {
 		        	line = line.strip();

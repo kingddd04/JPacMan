@@ -20,13 +20,14 @@ public class GUI extends JFrame{
 		
 		setVisible(true);
 		setSize(500,500);
+		setTitle("JPac-Man_by_Kingddd04");
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setFocusable(true);
 
 
-		ImageIcon localPacManIcon = new ImageIcon(SpritesLoader.class.getResource("/Sprites/pacmanRight.png"));
+		ImageIcon localPacManIcon = new ImageIcon(SpritesLoader.class.getResource("/Sprites/JpacManIcon.png"));
 		Image gameIcon = localPacManIcon.getImage();
 		setIconImage(gameIcon);
 		

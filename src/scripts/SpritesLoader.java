@@ -35,7 +35,7 @@ public class SpritesLoader {
         ImageIcon emptyTile = new ImageIcon(SpritesLoader.class.getResource("/Sprites/emptyTile.png"));
         ImageIcon portalTileA = new ImageIcon(SpritesLoader.class.getResource("/Sprites/portalTileA.png"));
         ImageIcon portalTileB = new ImageIcon(SpritesLoader.class.getResource("/Sprites/portalTileB.png"));
-        ImageIcon powerUpTile = new ImageIcon(SpritesLoader.class.getResource("/Sprites/powerUP.png"));
+        ImageIcon powerUpTile = new ImageIcon(SpritesLoader.class.getResource("/Sprites/powerUp.png"));
         
         // Ghosts sprites
         ImageIcon blueGhostImage = new ImageIcon(SpritesLoader.class.getResource("/Sprites/blueGhost.png"));
@@ -75,9 +75,5 @@ public class SpritesLoader {
 	    
 	    return spriteMap;
 	}
-	 public static void main(String[] args) throws Exception {
-		 HashMap<String, ImageIcon> spritesMap = SpritesLoader.SpritesMapLoader();
-		 System.out.print(spritesMap);
-	 }
 
 }

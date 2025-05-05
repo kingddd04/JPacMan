@@ -7,7 +7,7 @@ import javax.swing.Timer;
 
 public class GameEvents {
 	public void ghostSpawner(Ghost[] ghosts,GUI userGui, int ghostSpawnerCooldown) {
-		if (ghosts.length == 0){
+		if (ghosts[0] == null){
 			userGui.updateLifesLabelText("Ghosts are Coming, HURRY!");
 		}
 		if(ghostSpawnerCooldown == 0 && ghosts[0] == null) {
@@ -53,7 +53,7 @@ public class GameEvents {
 				if(Arrays.equals(pacmanCoordinnatesXY, ghostCollisionCoordinatesXY)) {
 					if(invincibleModeCooldown == 0) {
 						Game.decreaseLife();
-						SoundPlayer.playSound("src/Sounds/pacManDefeat.wav");
+						SoundPlayer.playSound("/Sounds/pacManDefeat.wav");
 						Game.ghostSpawnerCooldownReset();
 						for(Ghost ghostToBeDeleted : ghosts) {
 							if(ghostToBeDeleted != null) {
@@ -69,7 +69,7 @@ public class GameEvents {
 						int[]  killedGhostDeafultCoordinatesXY = ghost.getDefaultCoordinatesXY();
 						ghost.teleportAt(gameBoard, killedGhostDeafultCoordinatesXY);
 						Game.killedGhostScoreIncrease();
-						SoundPlayer.playSound("src/Sounds/ghostDefeated.wav");
+						SoundPlayer.playSound("/Sounds/ghostDefeated.wav");
 					}
 				}
 			}
@@ -120,7 +120,7 @@ public class GameEvents {
 	      }
 	   }
 		if(portalCrossed == true) {
-			SoundPlayer.playSound("src/Sounds/portalTeleport.wav");
+			SoundPlayer.playSound("/Sounds/portalTeleport.wav");
 		}
 	}
 	
@@ -156,7 +156,7 @@ public class GameEvents {
 		}
 			
 		if(victoryArchieved == true) {
-			gameBoard = MatrixFromFileExtractor.MatrixExtractor("src/TileMap.txt");
+			gameBoard = MatrixFromFileExtractor.MatrixExtractor("/Map/TileMap.txt");
 			int[] defaultPacManCoordinatesXY = pacman.getDefaultCoordinatesXY();
 			pacman.teleportAt(gameBoard, defaultPacManCoordinatesXY);
 			pacman.updateDirection(new int[] {0,0});
@@ -169,7 +169,7 @@ public class GameEvents {
 			Arrays.fill(ghosts, null);	
 			Game.ghostSpawnerCooldownReset();
 			userGui.updateLifesLabelText("YOU WIN, Congrats!");
-			SoundPlayer.playSound("src/Sounds/victoryAchieved.wav");
+			SoundPlayer.playSound("/Sounds/victoryAchieved.wav");
 		}
 		return victoryArchieved;
 	}

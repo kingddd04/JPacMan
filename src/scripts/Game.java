@@ -40,7 +40,7 @@ public class Game{
      * @see SpritesLoader#SpritesMapLoader()
      */
 	public Game() {
-		gameBoard = MatrixFromFileExtractor.MatrixExtractor("src/TileMap.txt");
+		gameBoard = MatrixFromFileExtractor.MatrixExtractor("/Files/TileMap.txt");
 		spriteMap = SpritesLoader.SpritesMapLoader(); 
 		
 		// Creations of game objects pacman and ghosts
@@ -118,7 +118,7 @@ public class Game{
 	}
 	
 	public void resetGameBoard() {
-		gameBoard = MatrixFromFileExtractor.MatrixExtractor("src/TileMap.txt");
+		gameBoard = MatrixFromFileExtractor.MatrixExtractor("/Files/TileMap.txt");
 	}
 	public static void ghostSpawnerCooldownReset() {
 		ghostSpawnerCooldown += 24;
