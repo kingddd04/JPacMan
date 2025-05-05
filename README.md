@@ -36,13 +36,12 @@ Players control Pac-Man to **collect dots**, **avoid ghosts**, and **use power-u
 
 ---
 
-##📝 License
+## 📝 License
 
 This project is licensed under the MIT License. You are free to use, copy, modify, and distribute this software under the license's terms.
-It took me a lot of time to develop this, just credit me if you use my work, i will onored if my work will be useful for someone :)
+It took me a lot of time to develop this, just credit me if you use my work, i will be onored if my work will be useful to someone :)
 
 ---
-
 
 ## 📦 Installation
 
