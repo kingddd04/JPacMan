@@ -2,11 +2,18 @@ package scripts;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
+/**
+ * This Class handles the input from keys by the user gets added to the gui by the game class
+ */
 public class UserInput implements KeyListener {
 	PacMan pacMan;
 	String[][] localgameBoard;
 
+	/**
+	 * Creates A new userImput project useful to execute methods on it to move pacman
+	 * 
+	 * @param pacMan a reference to the pacMan object useful to apply on it methods
+	 */
 	public UserInput(PacMan pacMan){
 		this.pacMan = pacMan;
 	}
@@ -18,9 +25,10 @@ public class UserInput implements KeyListener {
 	 *
 	 * @param e The KeyEvent that contains information about the key press.
 	 *
-	 * @see PacMan#verifyDirectionUpdate(String[][], int[])
+	 * @see PacMan#verifyDirectionUpdate(String[][], int[])  
+	 * @see GUI 
+	 * @see Game
 	 */
-	
     @Override
     public void keyPressed(KeyEvent e) {
         int[] pacmanInputDirectionXY = null;
@@ -47,6 +55,12 @@ public class UserInput implements KeyListener {
         // Not needed
     }
     
+    /**
+     * This method is useful to store locally the game array to pass as argument to  
+     * {@code pacMan.verifyDirectionUpdate()} variable is passed by reference
+     * 
+     * @param gameBoard this 2d array symbolises the current situation in the game 
+     */
     public void setLocalGameBoard(String[][] gameBoard) {
     	localgameBoard = gameBoard;
 	}
