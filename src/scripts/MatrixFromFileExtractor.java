@@ -10,7 +10,7 @@ import java.io.*;
  * methods for debugging and converting data structures for matrix manipulation.
  * 
  * @author Davide Di Stefano
- * @version 1.0.0
+ * @version 1.2.0
  * @since 1.0.0
  */
 
@@ -49,15 +49,24 @@ public class MatrixFromFileExtractor {
 		 gameMapCopy = deepCopy(fasterGameMap);
 		 return fasterGameMap;
 	}
-	
-	public static String[][] deepCopy(String[][] original) {
-	    if (original == null) return null; // Handle null case
+	/**
+	 * Creates a deep copy of a 2D array of strings.
+	 * This method ensures that the copied array is independent of the original array,
+	 * meaning that changes to the copy do not affect the original and vice versa.
+	 * Useful to avoid to read a file more than once
+	 * 
+	 * @param original GameMap The 2D array of strings to be copied. Can be {@code null}.
+	 * @return A new 2D array containing the same elements as the original, 
+	 *         or {@code null} if the original is {@code null}.
+	 */
+	public static String[][] deepCopy(String[][] originalGameMap) {
+	    if (originalGameMap == null) return null; // Handle null case
 	    
-	    String[][] copy = new String[original.length][];
-	    for (int i = 0; i < original.length; i++) {
-	        copy[i] = Arrays.copyOf(original[i], original[i].length);
+	    String[][] gameMapCopy = new String[originalGameMap.length][];
+	    for (int i = 0; i < originalGameMap.length; i++) {
+	        gameMapCopy[i] = Arrays.copyOf(originalGameMap[i], originalGameMap[i].length);
 	    }
-	    return copy;
+	    return gameMapCopy;
 	}
 
 	

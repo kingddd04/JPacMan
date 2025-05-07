@@ -24,6 +24,9 @@ public class GameEvents {
      * @param ghosts An array of {@code Ghost} objects representing the enemies in the game.
      * @param userGui The {@code GUI} object used to update the game UI.
      * @param ghostSpawnerCooldown The cooldown timer that determines when ghosts are spawned.
+     * 
+     * @see Game#ghostSpawnerCooldownReset()
+     * @see GUI#updateLifesLabelText(String)
      */
     public void ghostSpawner(Ghost[] ghosts, GUI userGui, int ghostSpawnerCooldown) {
         if (ghosts[0] == null) {
@@ -65,6 +68,14 @@ public class GameEvents {
      * @param invincibleModeCooldown The cooldown timer for Pac-Man's invincibility mode.
      * @param lives The number of lives remaining for Pac-Man.
      * @param gameBoard The 2D array representing the game board layout.
+     * 
+     * @see Ghost#removeGhostIcon(String[][])
+     * @see Character#getCoordinatesXY()
+     * @see Character#getCoordinatesXY()
+     * @see CharacterActions#teleportAt(String[][], int[])
+     * @see Game#ghostSpawnerCooldownReset()
+     * @see Game#killedGhostScoreIncrease()
+	 * @see GUI#updateLifesLabelText(String)
      */
     public void checkGameOver(PacMan pacman, Ghost[] ghosts, Timer gameClock, GUI userGui, int invincibleModeCooldown, int lives, String[][] gameBoard) {
         int[] pacmanCoordinnatesXY = pacman.getCoordinatesXY();
@@ -157,7 +168,12 @@ public class GameEvents {
      * @return {@code true} if the victory condition is met; {@code false} otherwise.
      * 
      * @see Game#resetGameBoard()
-     * @see Gsme#
+     * @see Game#resetGameBoard()
+     * @see Character#getCoordinatesXY()
+     * @see CharacterActions#teleportAt(String[][], int[])
+     * @see Game#ghostSpawnerCooldownReset()
+     * @see Ghost#removeGhostIcon(String[][])
+     * @see GUI#updateLifesLabelText(String)
      */
     public boolean checkVictory(PacMan pacman, Ghost[] ghosts, GUI userGui, String[][] gameBoard) {
         boolean victoryArchieved = true;

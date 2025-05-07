@@ -32,6 +32,9 @@ public class GUI extends JFrame {
      * Initializes the {@code GUI} class by setting up the game window and graphical elements.
      * The constructor creates the main layout, including panels for the game board,
      * score, and lives display.
+     * 
+     * @see UserInput
+     * @see Game
      */
     public GUI() {
 
