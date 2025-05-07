@@ -51,29 +51,29 @@ public class SpritesLoader {
         ImageIcon pacmanRightImage = new ImageIcon(SpritesLoader.class.getResource("/Sprites/pacmanRight.gif"));
 
 		
-		HashMap<String, ImageIcon> spriteMap = new HashMap<>();
+	HashMap<String, ImageIcon> spriteMap = new HashMap<>();
 		
-		spriteMap.put("P", pacmanRightImage);
-	    spriteMap.put("U", pacmanUpImage);    
-	    spriteMap.put("D", pacmanDownImage);   
-	    spriteMap.put("L", pacmanLeftImage);   
-	    spriteMap.put("0", portalTileA);
-	    spriteMap.put("O", portalTileB);
-	    spriteMap.put("W", wallTile);
-		spriteMap.put(".", foodTile);
-		spriteMap.put("f", fruitTile);
-		spriteMap.put("x", powerUpTile);
-		spriteMap.put(" ", emptyTile);
+	spriteMap.put("P", pacmanRightImage);
+	spriteMap.put("U", pacmanUpImage);    
+	spriteMap.put("D", pacmanDownImage);   
+	spriteMap.put("L", pacmanLeftImage);   
+	spriteMap.put("0", portalTileA);
+	spriteMap.put("O", portalTileB);
+	spriteMap.put("W", wallTile);
+	spriteMap.put(".", foodTile);
+	spriteMap.put("f", fruitTile);
+	spriteMap.put("x", powerUpTile);
+	spriteMap.put(" ", emptyTile);
 		
 
-	    spriteMap.put("b", blueGhostImage);   
-	    spriteMap.put("o", orangeGhostImage); 
-	    spriteMap.put("p", pinkGhostImage);   
-	    spriteMap.put("r", redGhostImage);    
-	    spriteMap.put("w", weaknedGhosImage);
+	spriteMap.put("b", blueGhostImage);   
+	spriteMap.put("o", orangeGhostImage); 
+	spriteMap.put("p", pinkGhostImage);   
+	spriteMap.put("r", redGhostImage);    
+	spriteMap.put("w", weaknedGhosImage);
 	    
 	    
-	    return spriteMap;
+	return spriteMap;
 	}
 
 }
