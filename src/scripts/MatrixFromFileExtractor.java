@@ -15,14 +15,16 @@ import java.io.*;
  */
 
 public class MatrixFromFileExtractor {
-    /**
+	private static String[][] gameMapCopy;
+	
+	
+	/**
      * Extracts a matrix from a specified file and converts it into a 2D string array.
      * Each row of the file represents a row in the matrix, with values separated by spaces.
      *
      * @param filepath the file path of the matrix data source(Strings separated by spaces)
      * @return a 2D string array representing the extracted matrix.
      */
-
 	public static String[][] MatrixExtractor(String filepath){
 		
 		// ArrayList is used in beginning for simpler assembling of the game board
@@ -44,7 +46,18 @@ public class MatrixFromFileExtractor {
 		 
 		 // Arraylist gameMap is converted to a 2d array for faster accessing
 		 String[][] fasterGameMap = convertToArrayOfArrays(gameMap);
+		 gameMapCopy = deepCopy(fasterGameMap);
 		 return fasterGameMap;
+	}
+	
+	public static String[][] deepCopy(String[][] original) {
+	    if (original == null) return null; // Handle null case
+	    
+	    String[][] copy = new String[original.length][];
+	    for (int i = 0; i < original.length; i++) {
+	        copy[i] = Arrays.copyOf(original[i], original[i].length);
+	    }
+	    return copy;
 	}
 
 	
@@ -81,5 +94,9 @@ public class MatrixFromFileExtractor {
 		        System.out.println(); // Newline for each row
 			}
 		    System.out.println("\n Object type"+fasterGameMap.getClass().getName());
+	}
+	
+	public static String[][] resetGameMap(){
+		return gameMapCopy;
 	}
 }

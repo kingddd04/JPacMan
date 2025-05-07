@@ -91,7 +91,9 @@ public class Game{
         	userGui.refreshGameScreen(gameBoard, spriteMap, pacman);
         	
         	// Check if victory is achieved
-        	if (gameEvents.checkVictory(pacman, ghosts,userGui, gameBoard) == true) {
+        	boolean victoryArchieved = gameEvents.checkVictory(pacman, ghosts,userGui, gameBoard);
+        	
+        	if (victoryArchieved == true) {
         		resetGameBoard();
         		spawnExtraLifeCherry();
         	}
@@ -118,7 +120,7 @@ public class Game{
 	}
 	
 	public void resetGameBoard() {
-		gameBoard = MatrixFromFileExtractor.MatrixExtractor("/Files/TileMap.txt");
+		gameBoard = MatrixFromFileExtractor.resetGameMap();
 	}
 	public static void ghostSpawnerCooldownReset() {
 		ghostSpawnerCooldown += 24;

@@ -26,6 +26,10 @@ public class GameEvents {
 			ghosts[3] = new Ghost(new int[]{10, 13}, new int[]{-1, 0}, "b");
 			Game.ghostSpawnerCooldownReset();
 			ghostSpawnerCooldown = 1;
+		}else {
+			if(ghostSpawnerCooldown == 0) {
+				Game.ghostSpawnerCooldownReset();
+			}
 		}
 	}
 	/**
@@ -47,9 +51,9 @@ public class GameEvents {
 	public void checkGameOver(PacMan pacman , Ghost[] ghosts, Timer gameClock, GUI userGui, int invincibleModeCooldown, int lives, String[][] gameBoard) {
 		
 		int[] pacmanCoordinnatesXY = pacman.getCoordinatesXY();
-		for(Ghost ghost : ghosts) {
-			if(ghost != null) {
-				int[] ghostCollisionCoordinatesXY = ghost.getCoordinatesXY();
+		for (int i = 0; i < ghosts.length; i++) {
+			if(ghosts[i] != null) {
+				int[] ghostCollisionCoordinatesXY = ghosts[i].getCoordinatesXY();
 				if(Arrays.equals(pacmanCoordinnatesXY, ghostCollisionCoordinatesXY)) {
 					if(invincibleModeCooldown == 0) {
 						Game.decreaseLife();
@@ -66,8 +70,8 @@ public class GameEvents {
 						pacman.teleportAt(gameBoard,pacmanDefaultCoordinatesXY);
 					}
 					else if(invincibleModeCooldown > 0){
-						int[]  killedGhostDeafultCoordinatesXY = ghost.getDefaultCoordinatesXY();
-						ghost.teleportAt(gameBoard, killedGhostDeafultCoordinatesXY);
+						ghosts[i].removeGhostIcon(gameBoard);
+						ghosts[i] = null;					
 						Game.killedGhostScoreIncrease();
 						SoundPlayer.playSound("/Sounds/ghostDefeated.wav");
 					}
@@ -141,7 +145,7 @@ public class GameEvents {
 	 * @see Ghost#teleportAt(String[][], int[])
 	 */
 
-	public boolean checkVictory(PacMan pacman , Ghost[] ghosts, GUI userGui ,String[][] gameBoard) {
+	public boolean checkVictory(PacMan pacman , Ghost[] ghosts, GUI userGui ,String[][] gameBoard){
 		boolean victoryArchieved = true;
 		for(String[] row : gameBoard) {
 			for(String element : row) {
@@ -156,7 +160,6 @@ public class GameEvents {
 		}
 			
 		if(victoryArchieved == true) {
-			gameBoard = MatrixFromFileExtractor.MatrixExtractor("/Map/TileMap.txt");
 			int[] defaultPacManCoordinatesXY = pacman.getDefaultCoordinatesXY();
 			pacman.teleportAt(gameBoard, defaultPacManCoordinatesXY);
 			pacman.updateDirection(new int[] {0,0});
