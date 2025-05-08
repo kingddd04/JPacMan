@@ -98,7 +98,7 @@ public class Game {
      * Resets the game board to its initial state.
      */
     public void resetGameBoard() {
-        gameBoard = MatrixFromFileExtractor.resetGameMap();
+        gameBoard = MatrixFromFileExtractor.getGameMapCopy();
     }
 
     /**

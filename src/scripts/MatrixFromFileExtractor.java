@@ -105,7 +105,7 @@ public class MatrixFromFileExtractor {
 		    System.out.println("\n Object type"+fasterGameMap.getClass().getName());
 	}
 	
-	public static String[][] resetGameMap(){
+	public static String[][] getGameMapCopy(){
 		return gameMapCopy;
 	}
 }

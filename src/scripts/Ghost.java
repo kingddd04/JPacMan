@@ -9,7 +9,7 @@ import java.util.Random;
  * and can be teleported when defeated
  * 
  * @author Davide Di Stefano
- * @version 1.2.0
+ * @version 1.0.0
  * @since 1.0.0
  */
 public class Ghost extends Character{
