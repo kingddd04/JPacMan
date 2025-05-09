@@ -21,7 +21,7 @@ Players control Pac-Man to **collect dots**, **avoid ghosts**, and **use power-u
 - Developed with **Java 24** ☕.
 - Graphical User Interface (GUI) built using `Java Swing`.
 - Modular and extensible design for easy customization.
-- Well-documented with **Javadoc and UTLM classes diagram** for learning and maintenance
+- Well-documented with **Javadoc and UML classes diagram** for learning and maintenance
 
 ---
 
