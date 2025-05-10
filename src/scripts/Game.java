@@ -26,7 +26,7 @@ public class Game {
     private static int score;
     private static int invincibleModeCooldown = 0;
     private static int lives = 3;
-    private static int ghostSpawnerCooldown = 24;
+    private static int ghostSpawnerCooldown = 18;
     private Timer gameClock;
 
     /**
@@ -44,33 +44,50 @@ public class Game {
         gameEvents = new GameEvents();
 
         userGui.addKeyListener(userInput);
+        userInput.setLocalGameBoard(gameBoard);
 
         gameClock = new Timer(300, (ActionEvent e) -> {
+        	
+        	// Update of the lives and score display on screen
             userGui.updateScoreDisplay();
             userGui.updatesLifesDisplay();
+            
+            // if the ghost spawner cooldown reaches 0 and the ghost array has some missing ghosts a ghost is spawned
             gameEvents.ghostSpawner(ghosts, userGui, ghostSpawnerCooldown);
-            userInput.setLocalGameBoard(gameBoard);
+            
+            // Move Player
             pacman.checkCollisionAndMove(gameBoard);
+            
+            //Check if pacMan collides with a ghost
             gameEvents.checkGameOver(pacman, ghosts, gameClock, userGui, invincibleModeCooldown, lives, gameBoard);
 
+            // Move ghosts
             for (Ghost ghost : ghosts) {
                 if (ghost != null) {
                     ghost.checkCollisionAndMove(gameBoard);
                 }
             }
+            
+            //Check if pacMan collides with a ghost
+            gameEvents.checkGameOver(pacman, ghosts, gameClock, userGui, invincibleModeCooldown, lives, gameBoard);
 
+            // decrease variables related to time if they are more than 0
             if (invincibleModeCooldown > 0) invincibleModeCooldown--;
             if (ghostSpawnerCooldown > 0) ghostSpawnerCooldown--;
 
+            // Teleport characters if they are on a portal tile to the other
             gameEvents.PortalTeleport(gameBoard, pacman, ghosts);
+            
+            // Refresh game Screen
             userGui.refreshGameScreen(gameBoard, spriteMap, pacman);
 
+            // Check Victory
             if (gameEvents.checkVictory(pacman, ghosts, userGui, gameBoard)) {
                 resetGameBoard();
                 spawnExtraLifeCherry();
             }
         });
-        gameClock.start();
+        gameClock.start();   // start game clock and game progression
     }
 
     /**
@@ -105,7 +122,7 @@ public class Game {
      * Resets the ghost spawn cooldown variable to its default value.
      */
     public static void ghostSpawnerCooldownReset() {
-        ghostSpawnerCooldown += 24;
+        ghostSpawnerCooldown += 18;
     }
 
     /**
