@@ -1,6 +1,6 @@
 # 🕹️ JPacMan
 
-<img src="src/Sprites/gameIcon.png" alt="GeoSimulator Icon" align="right" width="120"/>
+<img src="src/Sprites/JpacManIcon.png"  align="right" width="120"/>
 
 ## 📖 About
 
