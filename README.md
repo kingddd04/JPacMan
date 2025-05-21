@@ -1,5 +1,7 @@
 # 🕹️ JPacMan
 
+<img src="src/Sprites/gameIcon.png" alt="GeoSimulator Icon" align="right" width="120"/>
+
 ## 📖 About
 
 **JPacMan** is a Java-based implementation of the classic arcade game **Pac-Man**. It aims to provide an engaging gameplay experience and serves as a learning tool for Java programming enthusiasts. Is my first published project made for an exam at the university of Rome "Sapienza".
