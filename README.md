@@ -22,7 +22,7 @@ Players control Pac-Man to **collect dots**, **avoid ghosts**, and **use power-u
 - Graphical User Interface (GUI) built using `Java Swing`.
 - Modular and extensible design for easy customization.
 - Well-documented with **Javadoc and UML classes diagram** for learning and maintenance
-- Comprehensive **[Technical Report](TECHNICAL_REPORT.md)** explaining architecture, optimizations, and design patterns
+- Comprehensive **Technical Report** available in [Markdown](TECHNICAL_REPORT.md) and [PDF](TECHNICAL_REPORT.pdf) formats
 
 ---
 
@@ -40,7 +40,10 @@ Players control Pac-Man to **collect dots**, **avoid ghosts**, and **use power-u
 ## 📚 Documentation
 
 For a detailed technical analysis of the project's architecture and implementation:
-- **[Technical Report](TECHNICAL_REPORT.md)**: Comprehensive documentation covering:
+- **Technical Report** - Available in two formats:
+  - **[Markdown version](TECHNICAL_REPORT.md)** - For reading online
+  - **[PDF version](TECHNICAL_REPORT.pdf)** - For download and offline reading
+- Comprehensive documentation covering:
   - Model-View-Controller (MVC) architecture
   - Technical optimizations (data structures, resource management, rendering)
   - Smart code choices preventing unintended behavior
