@@ -8,10 +8,10 @@ package scripts;
  * and teleport 
  * 
  * @see Character
- * @see Game#keyPressed(java.awt.event.KeyEvent)
+ * @see UserInput#keyPressed(java.awt.event.KeyEvent)
  * 
  * @author Davide Di Stefano
- * @version 1.0.0
+ * @version 1.2.0
  * @since 1.0.0
  */
 public class PacMan extends Character{
@@ -19,8 +19,8 @@ public class PacMan extends Character{
 	/**
 	 * This builder creates a PacMan object taking in :
 	 * 
-	 * @param coordinatesXY the current pacMan coordinates at start this value is given to {@code defaultCoordinatesXY}
-	 * while {@code coordinatesXY} gets updated when pacman moves 
+	 * @param currentCoordinatesXY the current pacMan coordinates at start this value is given to {@code defaultCoordinatesXY}
+	 * while {@code coordinatesXY} gets updated when pac-man moves 
 	 * @param currentDirectionXY an integer array specifying the pac-man movement direction (x, y) given by the user.
 	 */
 	public PacMan(int[] currentCoordinatesXY, int[] currentDirectionXY) {
@@ -30,7 +30,7 @@ public class PacMan extends Character{
 	/**
 	 * This method is used to moved pac-man across the map based on the input of user and collisions with walls
 	 * 
-	 * @see Game#keyPressed(java.awt.event.KeyEvent) modify the direction from user input and validate it
+	 * @see UserInput#keyPressed(java.awt.event.KeyEvent) modify the direction from user input and validate it
 	 * @see PacMan#verifyDirectionUpdate(String[][], int[]) validate the direction of the movement to check if path is free makes the movement feel more fluid
 	 */
 	@Override
@@ -86,7 +86,7 @@ public class PacMan extends Character{
 	 * @param inputDirectionXY this is the desired direction chosen by user to be tested
 	 * 
 	 * @see #checkCollisionAndMove pacman movement
-	 * @see Game#keyPressed(java.awt.event.KeyEvent) modify the direction from user input and validate it
+	 * @see UserInput#keyPressed(java.awt.event.KeyEvent) modify the direction from user input and validate it
 	 */
 	public void verifyDirectionUpdate(String[][] gameBoard, int[] inputDirectionXY) {
 		if(!gameBoard[currentCoordinatesXY[1]+inputDirectionXY[1]][currentCoordinatesXY[0]+inputDirectionXY[0]].equals("W")) {

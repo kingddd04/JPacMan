@@ -10,24 +10,77 @@ import java.util.*;
  * The {@code Game} class contains the core game logic for JPacMan, managing 
  * the GUI, characters, events, and game state, using a simple clock that runs 3 times for second
  * 
- * @author kingddd04
+ * @author Davide Di Stefano
  * @version 1.2.0
  * @since 1.0.0
  */
 public class Game {
-	
-    private PacMan pacman;
-    private Ghost[] ghosts;
-    private GUI userGui;
-    private UserInput userInput;
-    private GameEvents gameEvents;
-    private String[][] gameBoard;
-    private HashMap<String, ImageIcon> spriteMap;
-    private static int score;
-    private static int invincibleModeCooldown = 0;
-    private static int lives = 3;
-    private static int ghostSpawnerCooldown = 18;
-    private Timer gameClock;
+	/**
+	 * The PacMan player character controlled by the user.
+	 */
+	private PacMan pacman;
+
+	/**
+	 * The array containing all active ghosts in the game.
+	 * A null entry indicates that the ghost has not yet been spawned.
+	 */
+	private Ghost[] ghosts;
+
+	/**
+	 * The graphical user interface responsible for rendering the game board,
+	 * score, lives, and all visual elements.
+	 */
+	private GUI userGui;
+
+	/**
+	 * Handles keyboard input from the user and updates PacMan's direction accordingly.
+	 */
+	private UserInput userInput;
+
+	/**
+	 * Manages all game-related events such as collisions, teleportation,
+	 * ghost spawning, and victory/defeat conditions.
+	 */
+	private GameEvents gameEvents;
+
+	/**
+	 * The 2D matrix representing the current state of the game board.
+	 * Each cell contains a string identifying the tile or entity present.
+	 */
+	private String[][] gameBoard;
+
+	/**
+	 * A map containing all loaded sprite images, indexed by their string identifiers.
+	 */
+	private HashMap<String, ImageIcon> spriteMap;
+
+	/**
+	 * The player's current score.
+	 */
+	private static int score;
+
+	/**
+	 * Remaining frames during which PacMan is invincible.
+	 * When greater than zero, collisions with ghosts do not cause death.
+	 */
+	private static int invincibleModeCooldown = 0;
+
+	/**
+	 * The number of lives the player currently has.
+	 */
+	private static int lives = 3;
+
+	/**
+	 * Cooldown timer controlling how frequently new ghosts can be spawned.
+	 * When it reaches zero, a ghost may be added to the game.
+	 */
+	private static int ghostSpawnerCooldown = 18;
+
+	/**
+	 * The main game timer responsible for updating the game state every 300 ms.
+	 */
+	private Timer gameClock;
+
 
     /**
      * Initialises the game, setting up the game board, characters, GUI, and event clock.

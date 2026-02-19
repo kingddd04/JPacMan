@@ -10,11 +10,14 @@ import java.io.*;
  * methods for debugging and converting data structures for matrix manipulation.
  * 
  * @author Davide Di Stefano
- * @version 1.2.0
+ * @version 1.0.0
  * @since 1.0.0
  */
 
 public class MatrixFromFileExtractor {
+	/**
+	 * A copy of the game board matrix, useful to reset the map without reloading the full matrix
+	 */
 	private static String[][] gameMapCopy;
 	
 	
@@ -55,7 +58,7 @@ public class MatrixFromFileExtractor {
 	 * meaning that changes to the copy do not affect the original and vice versa.
 	 * Useful to avoid to read a file more than once
 	 * 
-	 * @param original GameMap The 2D array of strings to be copied. Can be {@code null}.
+	 * @param originalGameMap The 2D array of strings to be copied. Can be {@code null}.
 	 * @return A new 2D array containing the same elements as the original, 
 	 *         or {@code null} if the original is {@code null}.
 	 */
@@ -104,7 +107,11 @@ public class MatrixFromFileExtractor {
 			}
 		    System.out.println("\n Object type"+fasterGameMap.getClass().getName());
 	}
-	
+	/** 
+	 * Retrieves a deep copy of the original game map loaded from file. 
+	 * This allows the game board to be reset without re-reading the file.
+	 * @return a deep copy of the original game map. 
+	 */
 	public static String[][] getGameMapCopy(){
 		return gameMapCopy;
 	}

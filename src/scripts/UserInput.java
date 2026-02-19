@@ -4,9 +4,18 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 /**
  * This Class handles the input from keys by the user gets added to the gui by the game class
+ * @author Davide Di Stefano
+ * @version 1.2.0
+ * @since 1.0.0
  */
 public class UserInput implements KeyListener {
+	/**
+	 * Reference to the Pac-Man instance whose direction will be updated based on user input. 
+	 */
 	PacMan pacMan;
+	/** Local reference to the current game board matrix. 
+	 * This is passed to Pac-Man when validating direction changes. 
+	 */
 	String[][] localgameBoard;
 
 	/**

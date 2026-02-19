@@ -9,7 +9,7 @@ import javax.swing.Timer;
  * conditions, teleporting characters through portals, and determining 
  * victory states.
  * 
- * @author kingddd04
+ * @author Davide Di Stefano
  * @version 1.0.0
  * @since 1.2.0
  */
