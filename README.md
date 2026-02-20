@@ -40,8 +40,7 @@ Players control Pac-Man to **collect dots**, **avoid ghosts**, and **use power-u
 ## 📚 Documentation
 
 For a detailed technical analysis of the project's architecture and implementation:
-- **Technical Report** - Available in two formats:
-  - **[Markdown version](TECHNICAL_REPORT.md)** - For reading online
+- **Technical Report** 
   - **[PDF version](TECHNICAL_REPORT.pdf)** - For download and offline reading
 - Comprehensive documentation covering:
   - Model-View-Controller (MVC) architecture
